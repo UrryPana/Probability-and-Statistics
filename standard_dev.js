@@ -1,13 +1,14 @@
    /************************************************
   / Standard Deviation Solver in Javascript       /
  / by Urry John Kyle Paña                        /
-/ 11/05/2024                                    /
+/ 11/05/2024 - 11/06/2024 11:50 PM              /
 ***********************************************/
 var string_listdifferencesnumber_list = [];
 var differences = [];
 var differences_squared = [];
 var arr_mean;
 var arr_variance;
+var arr_stdvar;
 
 var mean_text = "a.) Mean\n  Mean = ";
 var mean_answer = "  Mean = ";
@@ -16,6 +17,8 @@ var variance1_text = "c.) Variance \n Variance = "
 var variance2_text = " Variance = ";
 var variance3_text = " Variance = ";
 var variance4_text = " Variance = ";
+var standarddev_text = "d.) Standard Deviation \n Standard Deviation ="
+var standarddev2_text = " Standard Deviation = ";
 const limit = ",";
 
 let solvebtn = document.getElementById("solvebtn");
@@ -30,8 +33,8 @@ clearbtn.addEventListener("click",clear);
 3. get differences squared then print
 4. get sum of differences squared
 5. divide sum of differences squared by N
-6. get square root of variance
-7. get standard deviation then biglang sumayaw
+6. get variance
+7. get standard deviation
 
 */
 
@@ -88,7 +91,7 @@ function solve(e){
             variance1_text += "("+ value +")\u00B2" + " + ";  
         } 
     });
-    //4.0 
+    //4.0 print differences
     differences.forEach(function(value){
         if(value === differences[differences.length-1]){
             variance2_text += "("+ value**2 +")" + " / "+ differences.length+"\n";
@@ -97,21 +100,23 @@ function solve(e){
             variance2_text += "("+ value**2 +")" + " + ";  
         } 
     });
-    //5.0 
+    //5.0 sum of all difference squared
     variance3_text += (differences_squared.reduce(function(storage2,b){
             return storage2 + b;
         },0)) + " / "+ differences_squared.length +"\n";
-    //6.0
+    //6.0 variance
     var sum_diff_sqr = differences_squared.reduce(function(storage2,b){
         return storage2 + b;
     },0);
+    arr_variance = sum_diff_sqr/differences_squared.length;
     variance4_text += sum_diff_sqr/differences_squared.length + "\n";
-    //7.0
-
-    
-    
+    //7.0 solve the std deviation
+    arr_stdvar = Math.sqrt(arr_variance);
+    standarddev_text += "\u221A"+arr_variance+"\n";
+    standarddev2_text += arr_stdvar;
+    // \(=_=)/
     //output result in html
-    document.getElementById("computed_answer").value = mean_text + mean_answer + arr_diff + variance1_text + variance2_text + variance3_text + variance4_text;
+    document.getElementById("computed_answer").value = mean_text + mean_answer + arr_diff + variance1_text + variance2_text + variance3_text + variance4_text + standarddev_text + standarddev2_text;
 }
 
 function clear(e){
