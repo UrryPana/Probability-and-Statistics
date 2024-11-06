@@ -3,9 +3,10 @@
  / by Urry John Kyle Paña                        /
 / 11/05/2024 - 11/06/2024 11:50 PM              /
 ***********************************************/
-var string_listdifferencesnumber_list = [];
-var differences = [];
-var differences_squared = [];
+var string_list = new Array();
+var number_list = new Array();
+var differences = new Array();
+var differences_squared = new Array();
 var arr_mean;
 var arr_variance;
 var arr_stdvar;
@@ -37,8 +38,6 @@ clearbtn.addEventListener("click",clear);
 7. get standard deviation
 
 */
-
-
 
 function solve(e){
     var user_input = document.getElementById("raw_data_input").value;
