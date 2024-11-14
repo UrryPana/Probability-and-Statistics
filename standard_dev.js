@@ -120,4 +120,5 @@ function solve(e){
 
 function clear(e){
     document.getElementById("raw_data_input").value = ""; 
+    document.getElementById("computed_answer").value = "";
 }
